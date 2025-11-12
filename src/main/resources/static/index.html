@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Student CRUD App</title>
+    <script src="app.js" defer></script>
+</head>
+<body>
+<h1>Students in School</h1>
+<form id="studentForm">
+    <input type="hidden" id="studentId" />
+    <input type="text" id="name" placeholder="Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="number" id="age" placeholder="Age" required />
+    <button type="submit">Save</button>
+</form>
+
+<h2>All Students</h2>
+<table border="1" id="studentsTable">
+    <thead>
+    <tr><th>ID</th><th>Name</th><th>Email</th><th>Age</th><th>Actions</th></tr>
+    </thead>
+    <tbody></tbody>
+</table>
+</body>
+</html>
