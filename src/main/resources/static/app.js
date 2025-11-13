@@ -1,4 +1,6 @@
-const api = "http://localhost:8087/school/students";
+const origin = window.location.origin;
+console.log(origin);
+const api = origin + "/school/students";
 
 async function loadStudents() {
   const res = await fetch(api);
