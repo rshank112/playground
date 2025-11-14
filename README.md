@@ -1,6 +1,6 @@
 
 1. This app uses Spring boot with built-in tomcat server, JPA with an in memory DB for persistence, fronted by REST API and protected by JWT auth. The javascript calls this API to render in the UI.
-2. The application can be accessed at /login.html 
+2. The application can be accessed at  http://localhost:8080/login.html if run locally. With docker, use the host port in host-port:container-port mapping when running the image.
 3. username and password is my-school/awesome
 example of auth and API call: (I am using windows, please remove backslashes and replace the outer " with ' in -d):
 curl POST http://localhost:8080/school/auth/login -H "Content-Type: application/json" -d "{\"username\":\"my-school\",\"password\":\"awesome\"}"
