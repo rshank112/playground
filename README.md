@@ -9,4 +9,6 @@ curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJteS1zY2hvb2wiLCJp
 5. The code is in https://github.com/rshank112/playground/
 6. There are some screenshots of AWS deployment(at the root dir) and the running app
 7. I had to delete all the AWS resources because of the cost. I can send you the yaml file of all the resources I used to deploy the docker image and get it running on AWS. I cannot push it to github rejects anything which has secrets.
+8. There is a lot to be done for making this production ready off course. This is a very basic web app satisfying what was asked.
+9. The dockerfile is at the root directory and builds an image around 1.1GB. Can be reduced through some optimizations.
 
