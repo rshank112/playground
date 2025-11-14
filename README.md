@@ -9,4 +9,4 @@ Example of auth and API call: (I am using windows, please remove backslashes and
 5. There are some screenshots of AWS deployment in the screenshots directory and the running app. The running app screenshot is called App_Running_in_AWS.png
 6. I had to delete all the AWS resources because of the cost. I can send you the yaml file of all the resources I used to deploy the docker image and get it running on AWS. I cannot push it to github as it rejects anything which has secrets.
 7. There is a lot to be done for making this production ready of course. To start with it needs to be secured with SSL. This is a very basic web app satisfying what was asked.
-8. The dockerfile is at the root directory and builds an image around 1.1GB. Can be reduced by copying the exact pieces needed by the JRE
+8. The dockerfile is at the root directory and builds an image around 1.1GB most of it is the JDK. Can be reduced by copying the exact pieces needed by the JRE. We can probably go down to around 700MB
