@@ -1,4 +1,4 @@
-package com.sample.school;
+package com.sample.school.controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;

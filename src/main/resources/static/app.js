@@ -2,8 +2,36 @@ const origin = window.location.origin;
 console.log(origin);
 const api = origin + "/school/students";
 
+async function apiCall(url, options = {}) {
+  const token = localStorage.getItem("token");
+
+  options.headers = {
+    ...(options.headers || {}),
+    "Authorization": "Bearer " + token,
+    "Content-Type": "application/json"
+  };
+
+  return fetch(url, options);
+}
+
 async function loadStudents() {
-  const res = await fetch(api);
+  const token = localStorage.getItem("token");
+  if (!token) {
+    alert("No token found. Redirecting to login.");
+    window.location.href = "/login.html";
+    return;
+  }
+  const res = await apiCall(api);
+    if (res.status === 401 || res.status === 403) {
+       alert("Session expired. Please log in again.");
+       localStorage.removeItem("token");
+       window.location.href = "/login.html";
+       return;
+     }
+     if (res.status == 429) {
+        window.location.href = "/429.html";
+        return;
+     }
   const data = await res.json();
   const tbody = document.querySelector("#studentsTable tbody");
   tbody.innerHTML = "";
@@ -43,9 +71,9 @@ async function saveStudent(e) {
 
   const method = id ? "PUT" : "POST";
   const url = id ? `${api}/${id}` : api;
-  await fetch(url, {
+  await apiCall(url, {
     method,
-    headers: { "Content-Type": "application/json" },
+//    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(student)
   });
   document.getElementById("studentId").value = "";
@@ -55,7 +83,7 @@ async function saveStudent(e) {
 }
 
 async function editStudent(id) {
-  const res = await fetch(`${api}/${id}`);
+  const res = await apiCall(`${api}/${id}`);
   const s = await res.json();
   document.getElementById("studentId").value = s.id;
   document.getElementById("name").value = s.name;
@@ -64,7 +92,7 @@ async function editStudent(id) {
 }
 
 async function deleteStudent(id) {
-  await fetch(`${api}/${id}`, { method: "DELETE" });
+  await apiCall(`${api}/${id}`, { method: "DELETE" });
   loadStudents();
 }
 
